@@ -200,6 +200,8 @@ footer img{height:120px;margin-bottom:24px;opacity:1}
 .cpg-progress span{height:3px;flex:1;border-radius:3px;background:rgba(212,175,106,.18);transition:.4s}
 .cpg-progress span.on{background:linear-gradient(90deg,var(--oro),var(--oro2))}
 .cpg-final-ctas{display:flex;flex-direction:column;gap:14px;margin-top:30px}
+.cpg-final-group{display:flex;flex-direction:column;gap:10px;padding:18px;border:1px solid rgba(232,199,122,.22);border-radius:14px;background:rgba(232,199,122,.04)}
+.cpg-final-label{font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--oro);letter-spacing:.04em;margin-bottom:2px}
 .cpg-replay{background:none;border:none;color:var(--oro2);font-family:var(--sans);font-size:.85rem;letter-spacing:.08em;cursor:pointer;margin-top:18px;text-decoration:underline;text-underline-offset:4px}
 .cpg-replay:hover{color:var(--oro)}
 
@@ -584,23 +586,38 @@ for(let i=0;i<26;i++){const s=document.createElement('span');s.style.left=Math.r
 
   function finish(){
     var total=state.rounds.length;
-    var prog=(state.mode==='ado')?LINK_ADO_PROG:LINK_NINOS_PROG;
-    var progLabel=(state.mode==='ado')?'Conocé el programa para adolescentes':(state.mode==='ambos'?'Conocé los programas':'Conocé el programa para niños');
-    var regalo=(state.mode==='ado')?LINK_ADO_REGALO:LINK_NINOS_REGALO;
     var msg;
     if(state.score===total){msg='Escuchaste lo que había debajo de cada frase. Eso es exactamente lo que cambia un vínculo.';}
     else if(state.score>=Math.ceil(total/2)){msg='Estás en camino. En varias respuestas escuchaste lo que tu hijo siente de verdad. El resto se aprende.';}
     else{msg='Lo más valioso no es acertar: es darte cuenta de que debajo de cada reproche hay un pedido. Eso ya lo hiciste al jugar.';}
+    var ctas;
+    if(state.mode==='ambos'){
+      ctas=
+        '<div class="cpg-final-group">'+
+          '<span class="cpg-final-label">Para tu hijo de 6 a 12</span>'+
+          '<a class="cpg-choice" href="'+LINK_NINOS_REGALO+'">🎁 Quiero mi regalo gratuito</a>'+
+          '<a class="cpg-choice" href="'+LINK_NINOS_PROG+'">📘 Conocé el programa para niños</a>'+
+        '</div>'+
+        '<div class="cpg-final-group">'+
+          '<span class="cpg-final-label">Para tu hijo de 12 a 18</span>'+
+          '<a class="cpg-choice" href="'+LINK_ADO_REGALO+'">🎁 Quiero mi regalo gratuito</a>'+
+          '<a class="cpg-choice" href="'+LINK_ADO_PROG+'">📘 Conocé el programa para adolescentes</a>'+
+        '</div>';
+    }else{
+      var prog=(state.mode==='ado')?LINK_ADO_PROG:LINK_NINOS_PROG;
+      var progLabel=(state.mode==='ado')?'Conocé el programa para adolescentes':'Conocé el programa para niños';
+      var regalo=(state.mode==='ado')?LINK_ADO_REGALO:LINK_NINOS_REGALO;
+      ctas=
+        '<a class="cpg-choice" href="'+regalo+'">🎁 Quiero mi regalo gratuito</a>'+
+        '<a class="cpg-choice" href="'+prog+'">📘 '+progLabel+'</a>';
+    }
     render(
       '<span class="cpg-step">Detrás de cada reproche</span>'+
       '<p class="cpg-q" style="font-style:normal;margin-bottom:.2rem">Conectaste en</p>'+
       '<div class="cpg-score">'+state.score+' de '+total+'</div>'+
       '<h3 class="cpg-said" style="font-size:clamp(1.4rem,3.2vw,1.9rem)">Detrás de cada reproche,<br>hay un <span class="q">pedido de amor</span>.</h3>'+
       '<p class="cpg-q" style="font-style:normal;margin-top:1.4rem">'+msg+' Esto es lo que enseño todos los días: traducir lo que un hijo dice por lo que realmente siente. No se trata de tener todas las respuestas, sino de aprender a escuchar lo que hay debajo.</p>'+
-      '<div class="cpg-final-ctas">'+
-        '<a class="cpg-choice" href="'+regalo+'">🎁 Quiero mi regalo gratuito</a>'+
-        '<a class="cpg-choice" href="'+prog+'">📘 '+progLabel+'</a>'+
-      '</div>'+
+      '<div class="cpg-final-ctas">'+ctas+'</div>'+
       '<div class="cpg-next" style="justify-content:center;margin-top:18px"><button class="cpg-replay" id="cpg-replay">Volver a jugar</button></div>'
     );
     document.getElementById('cpg-replay').onclick=start;
