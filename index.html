@@ -166,6 +166,43 @@ footer img{height:120px;margin-bottom:24px;opacity:1}
   nav .ncta{display:none}
   .wrap{padding:0 20px}
 }
+
+/* ===== JUEGO CARTA PADRES ===== */
+#cp-game{max-width:680px;margin-left:auto;margin-right:auto;text-align:left}
+.cpg-card{background:linear-gradient(160deg,rgba(29,24,16,.9),rgba(13,11,8,.95));border:1px solid rgba(212,175,106,.22);border-radius:18px;padding:clamp(28px,5vw,48px);box-shadow:0 30px 80px -30px rgba(0,0,0,.8)}
+.cpg-fade{animation:cpgFade .55s ease both}
+@keyframes cpgFade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.cpg-step{font-family:var(--sans);font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--oro2);margin-bottom:1.4rem;display:block}
+.cpg-q{font-family:var(--serif);font-size:clamp(1.1rem,2.2vw,1.35rem);color:rgba(242,237,224,.7);margin-bottom:1.6rem;font-style:italic}
+.cpg-said{font-family:var(--serif);font-size:clamp(1.7rem,4vw,2.4rem);color:var(--marfil);line-height:1.2;margin:0 0 .4rem;font-weight:500}
+.cpg-said .q{background:linear-gradient(160deg,#F6E7BE,var(--oro2) 60%,var(--bronce));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.cpg-opts{display:flex;flex-direction:column;gap:14px;margin-top:30px}
+.cpg-opt{font-family:var(--sans);font-weight:300;font-size:1.02rem;line-height:1.5;color:var(--marfil);background:rgba(255,255,255,.02);border:1px solid rgba(212,175,106,.25);border-radius:12px;padding:18px 22px;text-align:left;cursor:pointer;transition:.28s;width:100%}
+.cpg-opt:hover{border-color:var(--oro);background:rgba(212,175,106,.07);transform:translateY(-1px)}
+.cpg-opt:disabled{cursor:default}
+.cpg-opt.sel-good{border-color:#7FB069;background:rgba(127,176,105,.12)}
+.cpg-opt.sel-bad{border-color:var(--bronce);background:rgba(138,106,47,.14)}
+.cpg-opt.dim{opacity:.35}
+.cpg-fb{margin-top:24px;padding:22px 24px;border-radius:12px;border-left:3px solid;animation:cpgFade .5s ease both}
+.cpg-fb.good{border-color:#7FB069;background:rgba(127,176,105,.08)}
+.cpg-fb.bad{border-color:var(--bronce);background:rgba(138,106,47,.08)}
+.cpg-fb-tag{font-family:var(--sans);font-weight:500;letter-spacing:.14em;text-transform:uppercase;font-size:.74rem;margin-bottom:.7rem;display:block}
+.cpg-fb.good .cpg-fb-tag{color:#9CCB7F}
+.cpg-fb.bad .cpg-fb-tag{color:var(--oro2)}
+.cpg-fb p{font-family:var(--serif);font-size:1.12rem;line-height:1.55;color:rgba(242,237,224,.9);margin:0}
+.cpg-fb em{color:var(--oro);font-style:italic}
+.cpg-next{margin-top:26px;display:flex;justify-content:flex-end}
+.cpg-choices{display:flex;flex-direction:column;gap:14px;margin-top:30px}
+.cpg-choice{font-family:var(--sans);font-size:1.05rem;color:var(--marfil);background:rgba(255,255,255,.02);border:1px solid rgba(212,175,106,.3);border-radius:50px;padding:16px 28px;cursor:pointer;transition:.28s;display:flex;align-items:center;gap:.7em;justify-content:center}
+.cpg-choice:hover{border-color:var(--oro);background:rgba(212,175,106,.08);transform:translateY(-1px)}
+.cpg-score{font-family:var(--serif);font-size:clamp(2.6rem,7vw,4rem);line-height:1;background:linear-gradient(160deg,#F6E7BE,var(--oro2) 55%,var(--bronce));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin:.2rem 0 1rem;font-weight:600}
+.cpg-progress{display:flex;gap:8px;margin-bottom:28px}
+.cpg-progress span{height:3px;flex:1;border-radius:3px;background:rgba(212,175,106,.18);transition:.4s}
+.cpg-progress span.on{background:linear-gradient(90deg,var(--oro),var(--oro2))}
+.cpg-final-ctas{display:flex;flex-direction:column;gap:14px;margin-top:30px}
+.cpg-replay{background:none;border:none;color:var(--oro2);font-family:var(--sans);font-size:.85rem;letter-spacing:.08em;cursor:pointer;margin-top:18px;text-decoration:underline;text-underline-offset:4px}
+.cpg-replay:hover{color:var(--oro)}
+
 </style>
 </head>
 <body>
@@ -205,10 +242,7 @@ footer img{height:120px;margin-bottom:24px;opacity:1}
     <span class="ante reveal">El juego</span>
     <h2 class="big reveal d1">A veces, detrás de un “dejame en paz” hay un “no sé cómo decirte que te necesito”.</h2>
     <p class="lead reveal d2">Probá este juego de 2 minutos. Te muestro algo que dicen los hijos, y vos elegís qué responderías. Sin registro. Solo para ver con otros ojos.</p>
-    <div class="reveal d3" style="margin-top:40px;padding:46px;border:1px dashed rgba(212,175,106,.3);border-radius:14px;text-align:center;background:rgba(255,255,255,.01)">
-      <p style="font-family:var(--serif);font-style:italic;font-size:1.3rem;color:var(--oro)">El juego interactivo se integra aquí.</p>
-      <p style="color:rgba(242,237,224,.55);margin-top:10px">Próxima etapa de construcción.</p>
-    </div>
+    <div id="cp-game" class="reveal d3" style="margin-top:48px"></div>
   </div>
 </section>
 <div class="divider"></div>
@@ -391,6 +425,190 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 // particles
 const pc=document.getElementById('particles');
 for(let i=0;i<26;i++){const s=document.createElement('span');s.style.left=Math.random()*100+'%';s.style.bottom=(-10+Math.random()*40)+'%';const d=6+Math.random()*10;s.style.animationDuration=d+'s';s.style.animationDelay=(Math.random()*d)+'s';const sz=2+Math.random()*3;s.style.width=s.style.height=sz+'px';pc.appendChild(s);}
+
+/* ===== JUEGO CARTA PADRES ===== */
+(function(){
+  var EL=document.getElementById('cp-game');
+  if(!EL)return;
+
+  // Links reales
+  var LINK_NINOS_PROG='https://www.patriciodessein.com/programa-ninos--9f28a1f8';
+  var LINK_ADO_PROG='https://www.patriciodessein.com/adolescente-337c67d4';
+  var LINK_NINOS_REGALO='https://www.patriciodessein.com/mi-regalo';
+  var LINK_ADO_REGALO='https://www.patriciodessein.com/adolescentes-miregalo';
+
+  // Rondas: said=frase del hijo, opts=[A,B,C], good=indice correcto (B=1),
+  // fbGood=feedback CONECTA, fbBad=feedback DISTANCIA. <em> = cursiva (cita emocional)
+  var N={
+    n1:{said:'¡Me gritan por todo!',
+      opts:['No te grito por todo, no exageres.',
+            'Tenés razón. A veces me gana el cansancio y te levanto la voz sin querer. Perdón.',
+            'Si te portaras bien, no tendría que gritarte.'],
+      good:1,
+      fbGood:'Cuando un hijo dice "me gritan por todo", casi nunca habla del volumen. Está diciendo: <em>me siento triste y necesito que me mires sin enojo.</em> Reconocer tu parte no te debilita: le enseña que el vínculo se puede reparar.',
+      fbBad:'Tu hijo no está midiendo si es "por todo" o no: está sintiendo que no lo ves. Debajo del reclamo hay un <em>me siento solo, quiero que me abracen.</em> No tenés que darle la razón en todo, pero sí mostrarle que lo escuchás.'},
+    n2:{said:'Vos nunca pasás tiempo conmigo.',
+      opts:['Trabajo todo el día para vos, no es justo que digas eso.',
+            'Tenés razón en algo. ¿Querés que busquemos un rato hoy que sea solo nuestro?',
+            'Estoy ocupado ahora, después vemos.'],
+      good:1,
+      fbGood:'"No pasás tiempo conmigo" rara vez es un reclamo de horas: es <em>quiero que me mires, quiero que estén conmigo.</em> Ofrecerle un rato propio, aunque sea corto, le dice que existe para vos.',
+      fbBad:'Tu hijo no está midiendo tu agenda: está sintiendo que no es prioridad. Defenderte con "trabajo para vos" lo deja solo con lo que sentía: <em>desearía que estén conmigo.</em>'},
+    n3:{said:'Nada de lo que hago está bien.',
+      opts:['Eso no es cierto, siempre te felicito.',
+            '¿Te estás sintiendo así? Contame, quiero entenderte. Yo veo cosas tuyas que valen mucho.',
+            'Bueno, si hicieras las cosas bien no te diría nada.'],
+      good:1,
+      fbGood:'Detrás de "nada está bien" hay un <em>me hacen sentir que nada de lo que hago alcanza, quisiera que estén orgullosos de mí.</em> Preguntar antes de corregir le devuelve la sensación de que vale.',
+      fbBad:'Negarle lo que siente ("eso no es cierto") no lo alivia: lo deja más solo. El chico no busca que le ganes el argumento, busca que lo veas.'},
+    n4:{said:'No me escuchan nunca.',
+      opts:['Sí te escucho, te estoy escuchando ahora.',
+            'Puede ser que a veces no te preste toda la atención. Decime, ¿qué me querías contar?',
+            'Es que hablás de cosas mientras estoy haciendo otra cosa.'],
+      good:1,
+      fbGood:'"No me escuchan" casi siempre significa <em>no me entienden cómo me siento, me interrumpen cuando hablo.</em> Frenar y darle el lugar para hablar es, para un niño, sentirse importante.',
+      fbBad:'Discutir si lo escuchás o no corre el foco. Él no quiere ganar esa discusión: quiere la experiencia de ser escuchado, sin que nadie esté en otra cosa.'}
+  };
+  var A={
+    a1:{said:'No me entienden.',
+      opts:['Claro que te entiendo, ya pasé por tu edad.',
+            'Capaz no te entiendo del todo. ¿Me ayudás a entenderlo? Quiero escucharte de verdad.',
+            'Lo que pasa es que vos tampoco te dejás entender.'],
+      good:1,
+      fbGood:'"No me entienden" es, en un adolescente, <em>necesito que me escuchen de verdad, que me acepten como soy.</em> Admitir que no entendés del todo y pedirle ayuda lo trata como alguien que tiene algo válido para decir.',
+      fbBad:'"Ya pasé por tu edad" cierra la puerta: le confirma que no hay espacio para lo que él siente hoy. El adolescente no quiere tu biografía, quiere tu escucha.'},
+    a2:{said:'Me controlan demasiado.',
+      opts:['Mientras vivas acá, se hace lo que yo digo.',
+            'Quiero cuidarte sin asfixiarte. ¿Qué espacio sentís que necesitás? Busquémoslo juntos.',
+            'Te controlo porque no me das motivos para confiar.'],
+      good:1,
+      fbGood:'"Me controlan demasiado" suele esconder <em>quiero más libertad, necesito privacidad, quiero que confíen en mí.</em> Poner límites negociando el espacio sostiene el vínculo y, a la vez, la guía.',
+      fbBad:'Imponer sin escuchar empuja al adolescente a cerrarse más. No pide ausencia de límites: pide ser tenido en cuenta dentro de ellos.'},
+    a3:{said:'Siempre me están encima.',
+      opts:['Estoy encima porque me preocupo, algún día lo vas a entender.',
+            'Me preocupás, es verdad. Pero quiero estar sin invadirte. ¿Cómo sería para vos?',
+            'Si no estuviera encima, no harías nada.'],
+      good:1,
+      fbGood:'"Están encima" significa muchas veces <em>quiero que estén, pero sin invadir, respeten mi espacio.</em> Nombrar tu preocupación y a la vez ofrecer aire le muestra que confiás en él.',
+      fbBad:'Justificar el control con "me preocupo" no llega: el adolescente lo escucha como desconfianza. Quiere sentir que creés en él, no que lo vigilás.'},
+    a4:{said:'No me toman en serio.',
+      opts:['Cuando seas grande te van a tomar en serio.',
+            'Quiero tomarte en serio. Contame tu punto, lo escucho sin interrumpir.',
+            'Es que a veces decís cosas sin pensar.'],
+      good:1,
+      fbGood:'"No me toman en serio" es <em>necesito que me escuchen de verdad, que confíen en mí, que no me hablen como si fuera chico.</em> Darle la palabra sin descalificarlo le devuelve dignidad.',
+      fbBad:'"Cuando seas grande" posterga lo que necesita ahora. El adolescente no pide tener razón siempre: pide que su voz pese hoy.'}
+  };
+
+  var PATHS={
+    ninos:[N.n1,N.n2,N.n3,N.n4],
+    ado:[A.a1,A.a2,A.a3,A.a4],
+    ambos:[N.n1,N.n2,A.a1,A.a2]
+  };
+
+  var state={mode:null,rounds:[],i:0,score:0,answered:false};
+
+  function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+  function render(html){EL.innerHTML='<div class="cpg-card cpg-fade">'+html+'</div>';}
+
+  function start(){
+    state={mode:null,rounds:[],i:0,score:0,answered:false};
+    render(
+      '<span class="cpg-step">El juego · 2 minutos</span>'+
+      '<h3 class="cpg-said">¿Entendés lo que tu hijo<br>te quiere <span class="q">decir</span>?</h3>'+
+      '<p class="cpg-q" style="font-style:normal;margin-top:1.2rem">A veces, detrás de un reproche, hay algo que no llegamos a escuchar. Te muestro algo que dicen los hijos, y vos elegís qué responderías.</p>'+
+      '<p class="cpg-q">¿Con quién querés jugar?</p>'+
+      '<div class="cpg-choices">'+
+        '<button class="cpg-choice" data-m="ninos">👦 Tengo hijos niños</button>'+
+        '<button class="cpg-choice" data-m="ado">🧑 Tengo hijos adolescentes</button>'+
+        '<button class="cpg-choice" data-m="ambos">👨‍👩‍👧‍👦 Tengo de los dos</button>'+
+      '</div>'
+    );
+    EL.querySelectorAll('.cpg-choice').forEach(function(b){
+      b.onclick=function(){state.mode=b.getAttribute('data-m');state.rounds=PATHS[state.mode];state.i=0;state.score=0;round();};
+    });
+  }
+
+  function progressBars(){
+    var s='';for(var k=0;k<state.rounds.length;k++){s+='<span class="'+(k<=state.i?'on':'')+'"></span>';}
+    return '<div class="cpg-progress">'+s+'</div>';
+  }
+
+  function round(){
+    state.answered=false;
+    var r=state.rounds[state.i];
+    var opts='';
+    for(var k=0;k<3;k++){
+      opts+='<button class="cpg-opt" data-k="'+k+'">'+esc(r.opts[k])+'</button>';
+    }
+    render(
+      progressBars()+
+      '<span class="cpg-step">Ronda '+(state.i+1)+' de '+state.rounds.length+'</span>'+
+      '<p class="cpg-q">Tu hijo te dice:</p>'+
+      '<h3 class="cpg-said">"<span class="q">'+esc(r.said)+'</span>"</h3>'+
+      '<p class="cpg-q" style="font-style:normal;margin-top:1.6rem">¿Qué le respondés?</p>'+
+      '<div class="cpg-opts">'+opts+'</div>'+
+      '<div id="cpg-fbslot"></div>'
+    );
+    EL.querySelectorAll('.cpg-opt').forEach(function(b){
+      b.onclick=function(){answer(parseInt(b.getAttribute('data-k'),10),b);};
+    });
+  }
+
+  function answer(k,btn){
+    if(state.answered)return;
+    state.answered=true;
+    var r=state.rounds[state.i];
+    var ok=(k===r.good);
+    if(ok)state.score++;
+    var btns=EL.querySelectorAll('.cpg-opt');
+    btns.forEach(function(b){
+      b.disabled=true;
+      var bk=parseInt(b.getAttribute('data-k'),10);
+      if(bk===k){b.classList.add(ok?'sel-good':'sel-bad');}
+      else{b.classList.add('dim');}
+    });
+    var last=(state.i===state.rounds.length-1);
+    var fb=
+      '<div class="cpg-fb '+(ok?'good':'bad')+'">'+
+        '<span class="cpg-fb-tag">'+(ok?'· Conectaste ·':'· Se abrió una distancia ·')+'</span>'+
+        '<p>'+(ok?r.fbGood:r.fbBad)+'</p>'+
+      '</div>'+
+      '<div class="cpg-next"><button class="cpg-choice" id="cpg-next" style="min-width:180px">'+(last?'Ver resultado →':'Siguiente →')+'</button></div>';
+    document.getElementById('cpg-fbslot').innerHTML=fb;
+    document.getElementById('cpg-next').onclick=function(){
+      if(last){finish();}else{state.i++;round();}
+    };
+  }
+
+  function finish(){
+    var total=state.rounds.length;
+    var prog=(state.mode==='ado')?LINK_ADO_PROG:LINK_NINOS_PROG;
+    var progLabel=(state.mode==='ado')?'Conocé el programa para adolescentes':(state.mode==='ambos'?'Conocé los programas':'Conocé el programa para niños');
+    var regalo=(state.mode==='ado')?LINK_ADO_REGALO:LINK_NINOS_REGALO;
+    var msg;
+    if(state.score===total){msg='Escuchaste lo que había debajo de cada frase. Eso es exactamente lo que cambia un vínculo.';}
+    else if(state.score>=Math.ceil(total/2)){msg='Estás en camino. En varias respuestas escuchaste lo que tu hijo siente de verdad. El resto se aprende.';}
+    else{msg='Lo más valioso no es acertar: es darte cuenta de que debajo de cada reproche hay un pedido. Eso ya lo hiciste al jugar.';}
+    render(
+      '<span class="cpg-step">Detrás de cada reproche</span>'+
+      '<p class="cpg-q" style="font-style:normal;margin-bottom:.2rem">Conectaste en</p>'+
+      '<div class="cpg-score">'+state.score+' de '+total+'</div>'+
+      '<h3 class="cpg-said" style="font-size:clamp(1.4rem,3.2vw,1.9rem)">Detrás de cada reproche,<br>hay un <span class="q">pedido de amor</span>.</h3>'+
+      '<p class="cpg-q" style="font-style:normal;margin-top:1.4rem">'+msg+' Esto es lo que enseño todos los días: traducir lo que un hijo dice por lo que realmente siente. No se trata de tener todas las respuestas, sino de aprender a escuchar lo que hay debajo.</p>'+
+      '<div class="cpg-final-ctas">'+
+        '<a class="cpg-choice" href="'+regalo+'">🎁 Quiero mi regalo gratuito</a>'+
+        '<a class="cpg-choice" href="'+prog+'">📘 '+progLabel+'</a>'+
+      '</div>'+
+      '<div class="cpg-next" style="justify-content:center;margin-top:18px"><button class="cpg-replay" id="cpg-replay">Volver a jugar</button></div>'
+    );
+    document.getElementById('cpg-replay').onclick=start;
+  }
+
+  start();
+})();
+
 </script>
 </body>
 </html>
