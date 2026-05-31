@@ -20,7 +20,7 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{background:linear-gradient(rgba(13,11,8,.38),rgba(13,11,8,.48)),url("fondo.jpg") center center / cover no-repeat fixed,var(--negro);color:var(--marfil);font-family:var(--sans);font-weight:300;line-height:1.7;overflow-x:hidden}
+body{background:var(--negro);color:var(--marfil);font-family:var(--sans);font-weight:300;line-height:1.7;overflow-x:hidden}
 body::before{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 .wrap{max-width:1180px;margin:0 auto;padding:0 28px}
 h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.12}
@@ -238,8 +238,7 @@ footer img{height:120px;margin-bottom:24px;opacity:1}
 }
 
 
-/* ===== FONDO GLOBAL (luz lateral dorada Higgsfield) ===== */
-@media(max-width:1024px){body{background:var(--negro)!important}}
+
 
 </style>
 </head>
