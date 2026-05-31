@@ -237,6 +237,15 @@ footer img{height:120px;margin-bottom:24px;opacity:1}
   .hero .carta{}
 }
 
+
+/* ===== FONDO GLOBAL (luz lateral dorada Higgsfield) ===== */
+body::before{content:"";position:fixed;inset:0;z-index:-2;
+  background:url('fondo.jpg') center center / cover no-repeat;
+  background-attachment:fixed}
+body::after{content:"";position:fixed;inset:0;z-index:-1;
+  background:linear-gradient(180deg,rgba(13,11,8,.82),rgba(13,11,8,.9))}
+@media(max-width:760px){body::before{background-attachment:scroll}}
+
 </style>
 </head>
 <body>
