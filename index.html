@@ -226,8 +226,9 @@ footer img{height:120px;margin-bottom:24px;opacity:1}
 @media(max-width:760px){
   .hero .hero-inner{padding:110px 7% 70px;justify-content:flex-end}
   .hero .hero-scrim{background:linear-gradient(180deg,rgba(13,11,8,.45) 0%,rgba(13,11,8,.35) 40%,rgba(13,11,8,.9) 100%)}
-  .hero .carta{white-space:normal;width:auto!important;animation:hfade 1s ease forwards 6.6s}
-  .hero .carta.l2{animation-delay:8.6s}
+  .hero .carta-wrap{min-height:3.4em}
+  .hero .carta{display:block;white-space:nowrap;width:0;font-size:clamp(1.25rem,5.4vw,2rem);animation:hescribir 1.9s steps(26,end) forwards 6.6s}
+  .hero .carta.l2{animation-delay:8.6s;animation-duration:1.7s}
   .hero .hero-cta{align-self:stretch;text-align:center}
 }
 @media(prefers-reduced-motion:reduce){
