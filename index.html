@@ -183,7 +183,16 @@ footer img{height:120px;margin-bottom:24px;opacity:1}
 .cpg-opt.sel-good{border-color:#7FB069;background:rgba(127,176,105,.12)}
 .cpg-opt.sel-bad{border-color:var(--bronce);background:rgba(138,106,47,.14)}
 .cpg-opt.dim{opacity:.35}
-.cpg-fb{margin-top:24px;padding:22px 24px;border-radius:12px;border-left:3px solid;animation:cpgFade .5s ease both}
+.cpg-figwrap{position:relative;margin:26px auto 4px;width:200px;height:240px;overflow:hidden;border-radius:16px}
+.cpg-figwrap::before{content:"";position:absolute;left:50%;top:34%;width:240px;height:240px;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(232,199,122,.16),rgba(232,199,122,0) 68%);pointer-events:none;z-index:0}
+.cpg-figwrap::after{content:"";position:absolute;left:0;right:0;bottom:0;height:46%;background:linear-gradient(to bottom,rgba(8,7,5,0),#0b0907 92%);pointer-events:none;z-index:2}
+.cpg-fig{position:relative;z-index:1;display:block;width:100%;height:100%;object-fit:cover;object-position:center 18%}
+.cpg-fig.in-good{animation:cpgFigZoom .9s cubic-bezier(.16,.84,.36,1) both}
+.cpg-fig.in-bad{animation:cpgFigSide 1s cubic-bezier(.16,.84,.36,1) both}
+@keyframes cpgFigZoom{from{opacity:0;transform:scale(1.12)}to{opacity:1;transform:scale(1)}}
+@keyframes cpgFigSide{from{opacity:0;transform:translateX(26px)}to{opacity:1;transform:translateX(0)}}
+@media(prefers-reduced-motion:reduce){.cpg-fig.in-good,.cpg-fig.in-bad{animation:cpgFade .5s ease both}}
+.cpg-fb{margin-top:18px;padding:22px 24px;border-radius:12px;border-left:3px solid;animation:cpgFade .5s ease both}
 .cpg-fb.good{border-color:#7FB069;background:rgba(127,176,105,.08)}
 .cpg-fb.bad{border-color:var(--bronce);background:rgba(138,106,47,.08)}
 .cpg-fb-tag{font-family:var(--sans);font-weight:500;letter-spacing:.14em;text-transform:uppercase;font-size:.74rem;margin-bottom:.7rem;display:block}
@@ -478,28 +487,32 @@ if(pc){for(let i=0;i<26;i++){const s=document.createElement('span');s.style.left
             'Si te portaras bien, no tendría que gritarte.'],
       good:1,
       fbGood:'Cuando un hijo dice "me gritan por todo", casi nunca habla del volumen. Está diciendo: <em>me siento triste y necesito que me mires sin enojo.</em> Reconocer tu parte no te debilita: le enseña que el vínculo se puede reparar.',
-      fbBad:'Tu hijo no está midiendo si es "por todo" o no: está sintiendo que no lo ves. Debajo del reclamo hay un <em>me siento solo, quiero que me abracen.</em> No tenés que darle la razón en todo, pero sí mostrarle que lo escuchás.'},
+      fbBad:'Tu hijo no está midiendo si es "por todo" o no: está sintiendo que no lo ves. Debajo del reclamo hay un <em>me siento solo, quiero que me abracen.</em> No tenés que darle la razón en todo, pero sí mostrarle que lo escuchás.',
+      figGood:'figuras_juego/empatia.jpg',figBad:'figuras_juego/reflexion.jpg'},
     n2:{said:'Vos nunca pasás tiempo conmigo.',
       opts:['Trabajo todo el día para vos, no es justo que digas eso.',
             'Tenés razón en algo. ¿Querés que busquemos un rato hoy que sea solo nuestro?',
             'Estoy ocupado ahora, después vemos.'],
       good:1,
       fbGood:'"No pasás tiempo conmigo" rara vez es un reclamo de horas: es <em>quiero que me mires, quiero que estén conmigo.</em> Ofrecerle un rato propio, aunque sea corto, le dice que existe para vos.',
-      fbBad:'Tu hijo no está midiendo tu agenda: está sintiendo que no es prioridad. Defenderte con "trabajo para vos" lo deja solo con lo que sentía: <em>desearía que estén conmigo.</em>'},
+      fbBad:'Tu hijo no está midiendo tu agenda: está sintiendo que no es prioridad. Defenderte con "trabajo para vos" lo deja solo con lo que sentía: <em>desearía que estén conmigo.</em>',
+      figGood:'figuras_juego/cercania.jpg',figBad:'figuras_juego/ternura.jpg'},
     n3:{said:'Nada de lo que hago está bien.',
       opts:['Eso no es cierto, siempre te felicito.',
             '¿Te estás sintiendo así? Contame, quiero entenderte. Yo veo cosas tuyas que valen mucho.',
             'Bueno, si hicieras las cosas bien no te diría nada.'],
       good:1,
       fbGood:'Detrás de "nada está bien" hay un <em>me hacen sentir que nada de lo que hago alcanza, quisiera que estén orgullosos de mí.</em> Preguntar antes de corregir le devuelve la sensación de que vale.',
-      fbBad:'Negarle lo que siente ("eso no es cierto") no lo alivia: lo deja más solo. El chico no busca que le ganes el argumento, busca que lo veas.'},
+      fbBad:'Negarle lo que siente ("eso no es cierto") no lo alivia: lo deja más solo. El chico no busca que le ganes el argumento, busca que lo veas.',
+      figGood:'figuras_juego/calidez.jpg',figBad:'figuras_juego/conversacion.jpg'},
     n4:{said:'No me escuchan nunca.',
       opts:['Sí te escucho, te estoy escuchando ahora.',
             'Puede ser que a veces no te preste toda la atención. Decime, ¿qué me querías contar?',
             'Es que hablás de cosas mientras estoy haciendo otra cosa.'],
       good:1,
       fbGood:'"No me escuchan" casi siempre significa <em>no me entienden cómo me siento, me interrumpen cuando hablo.</em> Frenar y darle el lugar para hablar es, para un niño, sentirse importante.',
-      fbBad:'Discutir si lo escuchás o no corre el foco. Él no quiere ganar esa discusión: quiere la experiencia de ser escuchado, sin que nadie esté en otra cosa.'}
+      fbBad:'Discutir si lo escuchás o no corre el foco. Él no quiere ganar esa discusión: quiere la experiencia de ser escuchado, sin que nadie esté en otra cosa.',
+      figGood:'figuras_juego/escucha.jpg',figBad:'figuras_juego/confianza.jpg'}
   };
   var A={
     a1:{said:'No me entienden.',
@@ -508,28 +521,32 @@ if(pc){for(let i=0;i<26;i++){const s=document.createElement('span');s.style.left
             'Lo que pasa es que vos tampoco te dejás entender.'],
       good:1,
       fbGood:'"No me entienden" es, en un adolescente, <em>necesito que me escuchen de verdad, que me acepten como soy.</em> Admitir que no entendés del todo y pedirle ayuda lo trata como alguien que tiene algo válido para decir.',
-      fbBad:'"Ya pasé por tu edad" cierra la puerta: le confirma que no hay espacio para lo que él siente hoy. El adolescente no quiere tu biografía, quiere tu escucha.'},
+      fbBad:'"Ya pasé por tu edad" cierra la puerta: le confirma que no hay espacio para lo que él siente hoy. El adolescente no quiere tu biografía, quiere tu escucha.',
+      figGood:'figuras_juego/invitacion.jpg',figBad:'figuras_juego/reflexion.jpg'},
     a2:{said:'Me controlan demasiado.',
       opts:['Mientras vivas acá, se hace lo que yo digo.',
             'Quiero cuidarte sin asfixiarte. ¿Qué espacio sentís que necesitás? Busquémoslo juntos.',
             'Te controlo porque no me das motivos para confiar.'],
       good:1,
       fbGood:'"Me controlan demasiado" suele esconder <em>quiero más libertad, necesito privacidad, quiero que confíen en mí.</em> Poner límites negociando el espacio sostiene el vínculo y, a la vez, la guía.',
-      fbBad:'Imponer sin escuchar empuja al adolescente a cerrarse más. No pide ausencia de límites: pide ser tenido en cuenta dentro de ellos.'},
+      fbBad:'Imponer sin escuchar empuja al adolescente a cerrarse más. No pide ausencia de límites: pide ser tenido en cuenta dentro de ellos.',
+      figGood:'figuras_juego/cercania.jpg',figBad:'figuras_juego/confianza.jpg'},
     a3:{said:'Siempre me están encima.',
       opts:['Estoy encima porque me preocupo, algún día lo vas a entender.',
             'Me preocupás, es verdad. Pero quiero estar sin invadirte. ¿Cómo sería para vos?',
             'Si no estuviera encima, no harías nada.'],
       good:1,
       fbGood:'"Están encima" significa muchas veces <em>quiero que estén, pero sin invadir, respeten mi espacio.</em> Nombrar tu preocupación y a la vez ofrecer aire le muestra que confiás en él.',
-      fbBad:'Justificar el control con "me preocupo" no llega: el adolescente lo escucha como desconfianza. Quiere sentir que creés en él, no que lo vigilás.'},
+      fbBad:'Justificar el control con "me preocupo" no llega: el adolescente lo escucha como desconfianza. Quiere sentir que creés en él, no que lo vigilás.',
+      figGood:'figuras_juego/calidez.jpg',figBad:'figuras_juego/ternura.jpg'},
     a4:{said:'No me toman en serio.',
       opts:['Cuando seas grande te van a tomar en serio.',
             'Quiero tomarte en serio. Contame tu punto, lo escucho sin interrumpir.',
             'Es que a veces decís cosas sin pensar.'],
       good:1,
       fbGood:'"No me toman en serio" es <em>necesito que me escuchen de verdad, que confíen en mí, que no me hablen como si fuera chico.</em> Darle la palabra sin descalificarlo le devuelve dignidad.',
-      fbBad:'"Cuando seas grande" posterga lo que necesita ahora. El adolescente no pide tener razón siempre: pide que su voz pese hoy.'}
+      fbBad:'"Cuando seas grande" posterga lo que necesita ahora. El adolescente no pide tener razón siempre: pide que su voz pese hoy.',
+      figGood:'figuras_juego/empatia.jpg',figBad:'figuras_juego/conversacion.jpg'}
   };
 
   var PATHS={
@@ -602,7 +619,10 @@ if(pc){for(let i=0;i<26;i++){const s=document.createElement('span');s.style.left
       else{b.classList.add('dim');}
     });
     var last=(state.i===state.rounds.length-1);
+    var figSrc=ok?r.figGood:r.figBad;
+    var figHtml=figSrc?('<div class="cpg-figwrap"><img class="cpg-fig '+(ok?'in-good':'in-bad')+'" src="'+figSrc+'" alt="Patricio Dessein" loading="lazy"></div>'):'';
     var fb=
+      figHtml+
       '<div class="cpg-fb '+(ok?'good':'bad')+'">'+
         '<span class="cpg-fb-tag">'+(ok?'· Conectaste ·':'· Se abrió una distancia ·')+'</span>'+
         '<p>'+(ok?r.fbGood:r.fbBad)+'</p>'+
