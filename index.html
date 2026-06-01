@@ -211,7 +211,8 @@ footer img{height:120px;margin-bottom:24px;opacity:1}
 
 /* ===== HERO PREMIUM (video fondo + carta manuscrita) ===== */
 .hero{min-height:100vh;padding:0;display:block;overflow:hidden;position:relative}
-.hero .hero-bgvid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0}
+.hero .hero-bgvid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0;transition:opacity .6s ease}
+body.cpg-jugando .hero-bgvid{opacity:0}
 .hero .hero-scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(13,11,8,.94) 0%,rgba(13,11,8,.74) 38%,rgba(13,11,8,.14) 66%,rgba(13,11,8,.55) 100%)}
 .hero .hero-scrim::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,11,8,.5) 0%,transparent 22%,transparent 70%,rgba(13,11,8,.85) 100%)}
 .hero .hero-inner{position:relative;z-index:3;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:120px 6% 90px;max-width:1280px;margin:0 auto}
@@ -553,6 +554,7 @@ if(pc){for(let i=0;i<26;i++){const s=document.createElement('span');s.style.left
   }
 
   function start(){
+    document.body.classList.remove('cpg-jugando');
     state={mode:null,rounds:[],i:0,score:0,answered:false};
     render(
       '<span class="cpg-step">El juego · 2 minutos</span>'+
@@ -566,7 +568,7 @@ if(pc){for(let i=0;i<26;i++){const s=document.createElement('span');s.style.left
       '</div>'
     );
     EL.querySelectorAll('.cpg-choice').forEach(function(b){
-      b.onclick=function(){state.mode=b.getAttribute('data-m');state.rounds=PATHS[state.mode];state.i=0;state.score=0;round();};
+      b.onclick=function(){document.body.classList.add('cpg-jugando');state.mode=b.getAttribute('data-m');state.rounds=PATHS[state.mode];state.i=0;state.score=0;round();};
     });
   }
 
@@ -627,6 +629,7 @@ if(pc){for(let i=0;i<26;i++){const s=document.createElement('span');s.style.left
   }
 
   function finish(){
+    document.body.classList.remove('cpg-jugando');
     var total=state.rounds.length;
     var msg;
     if(state.score===total){msg='Escuchaste lo que había debajo de cada frase. Eso es exactamente lo que cambia un vínculo.';}
