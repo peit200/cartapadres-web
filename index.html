@@ -560,6 +560,11 @@ if(pc){for(let i=0;i<26;i++){const s=document.createElement('span');s.style.left
   function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 
   function render(html){EL.innerHTML='<div class="cpg-card cpg-fade">'+html+'</div>';}
+  function scrollTop(){
+    var sec=document.getElementById('juego')||EL;
+    var y=sec.getBoundingClientRect().top+window.pageYOffset-20;
+    try{window.scrollTo({top:y,behavior:'smooth'});}catch(e){window.scrollTo(0,y);}
+  }
 
   function start(){
     state={mode:null,rounds:[],i:0,score:0,answered:false};
@@ -575,7 +580,7 @@ if(pc){for(let i=0;i<26;i++){const s=document.createElement('span');s.style.left
       '</div>'
     );
     EL.querySelectorAll('.cpg-choice').forEach(function(b){
-      b.onclick=function(){state.mode=b.getAttribute('data-m');state.rounds=PATHS[state.mode];state.i=0;state.score=0;round();};
+      b.onclick=function(){state.mode=b.getAttribute('data-m');state.rounds=PATHS[state.mode];state.i=0;state.score=0;scrollTop();round();};
     });
   }
 
@@ -630,6 +635,7 @@ if(pc){for(let i=0;i<26;i++){const s=document.createElement('span');s.style.left
       '<div class="cpg-next"><button class="cpg-choice" id="cpg-next" style="min-width:180px">'+(last?'Ver resultado →':'Siguiente →')+'</button></div>';
     document.getElementById('cpg-fbslot').innerHTML=fb;
     document.getElementById('cpg-next').onclick=function(){
+      scrollTop();
       if(last){finish();}else{state.i++;round();}
     };
   }
