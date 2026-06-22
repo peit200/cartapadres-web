@@ -503,7 +503,14 @@ if(pc){for(let i=0;i<26;i++){const s=document.createElement('span');s.style.left
             'Es que hablás de cosas mientras estoy haciendo otra cosa.'],
       good:1,figGood:'escucha.jpg',figBad:'confianza.jpg',
       fbGood:'"No me escuchan" casi siempre significa <em>no me entienden cómo me siento, me interrumpen cuando hablo.</em> Frenar y darle el lugar para hablar es, para un niño, sentirse importante.',
-      fbBad:'Discutir si lo escuchás o no corre el foco. Él no quiere ganar esa discusión: quiere la experiencia de ser escuchado, sin que nadie esté en otra cosa.'}
+      fbBad:'Discutir si lo escuchás o no corre el foco. Él no quiere ganar esa discusión: quiere la experiencia de ser escuchado, sin que nadie esté en otra cosa.'},
+    n5:{said:'No me sale nada, soy un tonto.',
+      opts:['No digas eso, sos súper inteligente.',
+            'Veo que te frustraste. Esto te costó y te ganó la bronca. ¿Lo intentamos juntos otra vez?',
+            'Si te esforzaras más, te saldría.'],
+      good:1,figGood:'ternura.jpg',figBad:'reflexion.jpg',
+      fbGood:'Cuando un hijo dice "soy un tonto", no está midiendo su inteligencia. Está diciendo: <em>me frustré y necesito que me acompañen, no que me juzguen.</em> Validar la frustración antes de corregir le enseña que equivocarse no lo hace menos.',
+      fbBad:'Apurarte a negarlo ("sos súper inteligente") o exigirle más lo deja solo con la frustración. No busca un veredicto sobre cuánto vale: busca que estés al lado mientras lo vuelve a intentar.'}
   };
   var A={
     a1:{said:'No me entienden.',
@@ -533,13 +540,20 @@ if(pc){for(let i=0;i<26;i++){const s=document.createElement('span');s.style.left
             'Es que a veces decís cosas sin pensar.'],
       good:1,figGood:'empatia.jpg',figBad:'conversacion.jpg',
       fbGood:'"No me toman en serio" es <em>necesito que me escuchen de verdad, que confíen en mí, que no me hablen como si fuera chico.</em> Darle la palabra sin descalificarlo le devuelve dignidad.',
-      fbBad:'"Cuando seas grande" posterga lo que necesita ahora. El adolescente no pide tener razón siempre: pide que su voz pese hoy.'}
+      fbBad:'"Cuando seas grande" posterga lo que necesita ahora. El adolescente no pide tener razón siempre: pide que su voz pese hoy.'},
+    a5:{said:'Dejame en paz, no entendés nada.',
+      opts:['Mientras vivas en esta casa, me hablás con respeto.',
+            'Está bien, te doy tu espacio. Cuando quieras, acá estoy para escucharte sin juzgar.',
+            'Yo también fui adolescente, sé perfectamente lo que te pasa.'],
+      good:1,figGood:'escucha.jpg',figBad:'confianza.jpg',
+      fbGood:'Cuando un adolescente dice "no entendés nada", rara vez te está echando. Está diciendo: <em>me siento solo con lo que siento y necesito que no me presiones.</em> Darle espacio sin retirarte del todo le muestra que puede alejarse sin perder el vínculo.',
+      fbBad:'Responder con autoridad ("me hablás con respeto") o con "ya fui adolescente" cierra la puerta. No pide que tengas la razón: pide un lugar donde volver cuando esté listo.'}
   };
 
   var PATHS={
-    ninos:[N.n1,N.n2,N.n3,N.n4],
-    ado:[A.a1,A.a2,A.a3,A.a4],
-    ambos:[N.n1,N.n2,A.a1,A.a2]
+    ninos:[N.n1,N.n2,N.n3,N.n4,N.n5],
+    ado:[A.a1,A.a2,A.a3,A.a4,A.a5],
+    ambos:[N.n1,N.n2,A.a1,A.a2,N.n5,A.a5]
   };
 
   var state={mode:null,rounds:[],i:0,score:0,answered:false};
