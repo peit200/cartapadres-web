@@ -685,25 +685,22 @@ if(pc){for(let i=0;i<26;i++){const s=document.createElement('span');s.style.left
     if(state.score===total){msg='Escuchaste lo que había debajo de cada frase. Eso es exactamente lo que cambia un vínculo.';}
     else if(state.score>=Math.ceil(total/2)){msg='Estás en camino. En varias respuestas escuchaste lo que tu hijo siente de verdad. El resto se aprende.';}
     else{msg='Lo más valioso no es acertar: es darte cuenta de que debajo de cada reproche hay un pedido. Eso ya lo hiciste al jugar.';}
+    var regaloSrc=(state.mode==='ado')?LINK_ADO_REGALO:LINK_NINOS_REGALO;
+    var captura=
+      '<div class="cpg-final-group">'+
+        '<span class="cpg-final-label">📩 Dejá tu mail acá y te mando tu resultado + la guía gratuita para empezar hoy</span>'+
+        '<iframe src="'+regaloSrc+'" loading="lazy" title="Recibir la guía gratuita" style="width:100%;height:620px;border:1px solid rgba(212,175,106,.35);border-radius:14px;background:#14100b"></iframe>'+
+        ((state.mode==='ambos')?'<a class="cpg-choice" href="'+LINK_ADO_REGALO+'">🎁 También quiero la guía para adolescentes</a>':'')+
+      '</div>';
     var ctas;
     if(state.mode==='ambos'){
-      ctas=
-        '<div class="cpg-final-group">'+
-          '<span class="cpg-final-label">Para tu hijo de 6 a 12</span>'+
-          '<a class="cpg-choice" href="'+LINK_NINOS_REGALO+'">📩 Recibí tu resultado + la guía gratis por mail</a>'+
-          '<a class="cpg-choice" href="'+LINK_NINOS_PROG+'">📘 Conocé el programa para niños</a>'+
-        '</div>'+
-        '<div class="cpg-final-group">'+
-          '<span class="cpg-final-label">Para tu hijo de 12 a 18</span>'+
-          '<a class="cpg-choice" href="'+LINK_ADO_REGALO+'">📩 Recibí tu resultado + la guía gratis por mail</a>'+
-          '<a class="cpg-choice" href="'+LINK_ADO_PROG+'">📘 Conocé el programa para adolescentes</a>'+
-        '</div>';
+      ctas=captura+
+        '<a class="cpg-choice" href="'+LINK_NINOS_PROG+'">📘 Conocé el programa para niños</a>'+
+        '<a class="cpg-choice" href="'+LINK_ADO_PROG+'">📘 Conocé el programa para adolescentes</a>';
     }else{
       var prog=(state.mode==='ado')?LINK_ADO_PROG:LINK_NINOS_PROG;
       var progLabel=(state.mode==='ado')?'Conocé el programa para adolescentes':'Conocé el programa para niños';
-      var regalo=(state.mode==='ado')?LINK_ADO_REGALO:LINK_NINOS_REGALO;
-      ctas=
-        '<a class="cpg-choice" href="'+regalo+'">📩 Recibí tu resultado + la guía gratis por mail</a>'+
+      ctas=captura+
         '<a class="cpg-choice" href="'+prog+'">📘 '+progLabel+'</a>';
     }
     render(
@@ -739,5 +736,6 @@ if(pc){for(let i=0;i<26;i++){const s=document.createElement('span');s.style.left
     setTimeout(function(){ escribir(c1,t1,function(){ setTimeout(function(){ escribir(c2,t2); },350); }); }, 1200);
   }
 })();</script><style>@media(max-width:760px){.reveal{opacity:1!important;transform:none!important;transition:none!important}}</style>
+<script>setTimeout(function(){document.querySelectorAll(".reveal").forEach(function(e){e.classList.add("in");});},1800);</script>
 </body>
 </html>
