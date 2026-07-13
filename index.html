@@ -267,6 +267,7 @@ body.cpg-jugando .hero-bgvid{opacity:0}
       <span class="carta" id="carta1"></span>
       <span class="carta l2" id="carta2"></span>
     </div>
+    <p style="font-family:var(--sans);color:rgba(242,237,224,.92);font-size:clamp(1rem,2.4vw,1.15rem);max-width:34ch;margin:14px auto 6px;line-height:1.5">Ayudo a padres de niños y adolescentes a <strong style="color:#E8C77A">reconstruir el vínculo</strong>, con herramientas simples que funcionan en casa.</p>
     <a class="hero-cta" href="#juego">Jug&aacute;: &iquest;entend&eacute;s lo que tu hijo te quiere decir? &rarr;</a>
   </div>
   <div class="scrollcue">Desliz&aacute; &darr;</div>
@@ -291,8 +292,8 @@ body.cpg-jugando .hero-bgvid{opacity:0}
       <div class="reveal d1">
         <span class="ante">Quién soy</span>
         <h2 class="big">No vengo de la psicología. Vengo de toda una vida tratando de entender a las personas.</h2>
-        <p>Soy Patricio Dessein. Durante más de veinte años trabajé en medios: fui vicepresidente del directorio de la agencia de noticias DYN y miembro de los directorios de la Asociación de Diarios del Interior y de La Gaceta de Tucumán. También produje cine. Mi oficio siempre fue el mismo: entender qué le pasa a la gente y encontrar la forma de comunicarlo.</p>
-        <p>Hace más de diez años empecé otro camino, más personal: revisar mis propios vínculos, los patrones que heredé, la forma en que me relacionaba con los que más quiero. Ese trabajo me cambió. Y me llevó a lo que hago hoy.</p>
+        <p>Soy Patricio Dessein. Hace más de diez años empecé un camino personal: revisar mis propios vínculos, los patrones que heredé, la forma en que me relacionaba con los que más quiero. Ese trabajo me cambió. Y me llevó a lo que hago hoy.</p>
+        <p>Antes pasé más de veinte años en los medios —fui vicepresidente del directorio de la agencia de noticias DYN y directivo de La Gaceta de Tucumán, y produje cine—. Mi oficio siempre fue el mismo: entender qué le pasa a la gente y encontrar la forma de comunicarlo.</p>
         <p>Hoy acompaño a mamás y papás de toda Hispanoamérica a reconstruir el vínculo con sus hijos: niños, adolescentes e hijos ya adultos. Creé dos programas, <span class="oro">Creando Puentes</span> para niños y para adolescentes, y una comunidad que ya supera el millón y medio de personas en más de quince países.</p>
         <p>No tengo un título de psicólogo y no pretendo tenerlo. Lo que tengo son herramientas concretas, una mirada honesta y años escuchando a madres y padres reales. Me sigo formando todo el tiempo, con cursos online y con referentes del desarrollo personal. Pero lo que más me enseñó fue escuchar.</p>
         <div class="stats">
@@ -336,7 +337,7 @@ body.cpg-jugando .hero-bgvid{opacity:0}
         <p class="desc">Construí el vínculo antes de la adolescencia, en la etapa donde todo se está cableando.</p>
         <ul><li>7 módulos principales</li><li>2 videos por semana + ejercicios guiados</li><li>Comunidad privada y sesiones grupales</li><li>Acceso de por vida</li></ul>
         <div class="precio">Desde USD 397<small>o su valor en tu moneda local · 1, 3 o 6 cuotas sin interés</small></div>
-        <a class="btn-oro" href="https://www.patriciodessein.com/ninos-397">Conocer el programa de Niños →</a>
+        <a class="btn-oro" href="https://www.patriciodessein.com/ninos-397">Empezar con Niños →</a>
       </div>
       <div class="card reveal d1">
         <div class="et">Creando Puentes</div>
@@ -344,7 +345,7 @@ body.cpg-jugando .hero-bgvid{opacity:0}
         <p class="desc">Seguí siendo su lugar seguro, incluso cuando su único idioma son los gruñidos.</p>
         <ul><li>7 módulos principales</li><li>2 videos por semana + ejercicios guiados</li><li>Comunidad privada y sesiones grupales</li><li>Acceso de por vida</li></ul>
         <div class="precio">Desde USD 397<small>o su valor en tu moneda local · 1, 3 o 6 cuotas sin interés</small></div>
-        <a class="btn-oro" href="https://www.patriciodessein.com/adolescentes-397">Conocer el programa de Adolescentes →</a>
+        <a class="btn-oro" href="https://www.patriciodessein.com/adolescentes-397">Empezar con Adolescentes →</a>
       </div>
     </div>
     <p class="nota-prog reveal d2">Garantía de 7 días en todos los niveles: si en la primera semana sentís que no es para vos, te devuelvo el 100%.</p>
@@ -689,12 +690,12 @@ if(pc){for(let i=0;i<26;i++){const s=document.createElement('span');s.style.left
       ctas=
         '<div class="cpg-final-group">'+
           '<span class="cpg-final-label">Para tu hijo de 6 a 12</span>'+
-          '<a class="cpg-choice" href="'+LINK_NINOS_REGALO+'">🎁 Quiero mi regalo gratuito</a>'+
+          '<a class="cpg-choice" href="'+LINK_NINOS_REGALO+'">📩 Recibí tu resultado + la guía gratis por mail</a>'+
           '<a class="cpg-choice" href="'+LINK_NINOS_PROG+'">📘 Conocé el programa para niños</a>'+
         '</div>'+
         '<div class="cpg-final-group">'+
           '<span class="cpg-final-label">Para tu hijo de 12 a 18</span>'+
-          '<a class="cpg-choice" href="'+LINK_ADO_REGALO+'">🎁 Quiero mi regalo gratuito</a>'+
+          '<a class="cpg-choice" href="'+LINK_ADO_REGALO+'">📩 Recibí tu resultado + la guía gratis por mail</a>'+
           '<a class="cpg-choice" href="'+LINK_ADO_PROG+'">📘 Conocé el programa para adolescentes</a>'+
         '</div>';
     }else{
@@ -702,7 +703,7 @@ if(pc){for(let i=0;i<26;i++){const s=document.createElement('span');s.style.left
       var progLabel=(state.mode==='ado')?'Conocé el programa para adolescentes':'Conocé el programa para niños';
       var regalo=(state.mode==='ado')?LINK_ADO_REGALO:LINK_NINOS_REGALO;
       ctas=
-        '<a class="cpg-choice" href="'+regalo+'">🎁 Quiero mi regalo gratuito</a>'+
+        '<a class="cpg-choice" href="'+regalo+'">📩 Recibí tu resultado + la guía gratis por mail</a>'+
         '<a class="cpg-choice" href="'+prog+'">📘 '+progLabel+'</a>';
     }
     render(
@@ -710,7 +711,7 @@ if(pc){for(let i=0;i<26;i++){const s=document.createElement('span');s.style.left
       '<p class="cpg-q" style="font-style:normal;margin-bottom:.2rem">Conectaste en</p>'+
       '<div class="cpg-score">'+state.score+' de '+total+'</div>'+
       '<h3 class="cpg-said" style="font-size:clamp(1.4rem,3.2vw,1.9rem)">Detrás de cada reproche,<br>hay un <span class="q">pedido de amor</span>.</h3>'+
-      '<p class="cpg-q" style="font-style:normal;margin-top:1.4rem">'+msg+' Esto es lo que enseño todos los días: traducir lo que un hijo dice por lo que realmente siente. No se trata de tener todas las respuestas, sino de aprender a escuchar lo que hay debajo.</p>'+
+      '<p class="cpg-q" style="font-style:normal;margin-top:1.4rem">'+msg+' Esto es lo que enseño todos los días: traducir lo que un hijo dice por lo que realmente siente. No se trata de tener todas las respuestas, sino de aprender a escuchar lo que hay debajo. Dejame tu mail y te mando una guía gratuita para empezar hoy.</p>'+
       '<div class="cpg-final-ctas">'+ctas+'</div>'+
       '<div class="cpg-next" style="justify-content:center;margin-top:18px"><button class="cpg-replay" id="cpg-replay">Volver a jugar</button></div>'
     );
@@ -730,12 +731,13 @@ if(pc){for(let i=0;i<26;i++){const s=document.createElement('span');s.style.left
   function escribir(el,txt,done){
     var i=0;
     (function paso(){
-      if(i<=txt.length){ el.textContent=txt.slice(0,i); i++; setTimeout(paso,80); }
+      if(i<=txt.length){ el.textContent=txt.slice(0,i); i++; setTimeout(paso,45); }
       else if(done){ done(); }
     })();
   }
   if(c1&&c2){
-    setTimeout(function(){ escribir(c1,t1,function(){ setTimeout(function(){ escribir(c2,t2); },350); }); }, 6600);
+    setTimeout(function(){ escribir(c1,t1,function(){ setTimeout(function(){ escribir(c2,t2); },350); }); }, 1200);
   }
-})();</script></body>
+})();</script><style>@media(max-width:760px){.reveal{opacity:1!important;transform:none!important;transition:none!important}}</style>
+</body>
 </html>
