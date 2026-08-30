@@ -2,6 +2,11 @@
   "cleanUrls": true,
   "redirects": [
     {
+      "source": "/blog",
+      "destination": "/articulos",
+      "permanent": true
+    },
+    {
       "source": "/mi-regalo",
       "destination": "https://www.patriciodessein.com/mi-regalo",
       "permanent": true
